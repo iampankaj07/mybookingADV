@@ -8,12 +8,17 @@ import '../../widgets/custom_switch.dart';
 import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
-class NotificationScreen extends StatelessWidget {
+class NotificationScreen extends StatefulWidget {
   NotificationScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
   TextEditingController flightdelayvaluController = TextEditingController();
 
   TextEditingController changegatevalueController = TextEditingController();
@@ -25,6 +30,7 @@ class NotificationScreen extends StatelessWidget {
   bool isSelectedSwitch2 = false;
 
   bool isSelectedSwitch3 = false;
+  bool isSelectedSwitch4 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +46,9 @@ class NotificationScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Divider(
-                color: theme.colorScheme.secondaryContainer,
-              ),
+              // Divider(
+              //   color: theme.colorScheme.secondaryContainer,
+              // ),
               SizedBox(height: 39.v),
               _buildColumnFlightDel(context),
               SizedBox(height: 5.v)
@@ -56,29 +62,26 @@ class NotificationScreen extends StatelessWidget {
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-      height: 61.v,
-      leadingWidth: 55.h,
-      leading: AppbarLeadingImage(
-        imagePath: ImageConstant.imgArrowLeftBlack900,
-        margin: EdgeInsets.only(
-          left: 23.h,
-          top: 13.v,
-          bottom: 13.v,
-        ),
-        onTap: () {
-          onTapArrowleftone(context);
+      height: 81.v,
+      centerTitle: true,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.pop(context);
         },
       ),
-      centerTitle: true,
-      title: AppbarSubtitle(
-        text: "Notification",
+      title: Text(
+        "Notification",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
       ),
       actions: [
-        AppbarTrailingImage(
-          imagePath: ImageConstant.imgFlowbiteDotsV,
-          margin: EdgeInsets.fromLTRB(33.h, 16.v, 33.h, 15.v),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
         )
       ],
+      styleType: Style.bgFill,
     );
   }
 
@@ -101,170 +104,140 @@ class NotificationScreen extends StatelessWidget {
         children: [
           SizedBox(height: 17.v),
           Padding(
-            padding: EdgeInsets.only(
-              left: 15.h,
-              right: 5.h,
-            ),
-            child: CustomTextFormField(
-              controller: flightdelayvaluController,
-              hintText: "Flight Delay",
-              suffix: Container(
-                margin: EdgeInsets.fromLTRB(30.h, 7.v, 9.h, 7.v),
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgVectorBlack900,
-                  height: 15.v,
-                  width: 27.h,
-                ),
-              ),
-              suffixConstraints: BoxConstraints(
-                maxHeight: 34.v,
-              ),
-              contentPadding: EdgeInsets.only(
-                left: 2.h,
-                top: 6.v,
-                bottom: 6.v,
-              ),
-              borderDecoration:
-                  TextFormFieldStyleHelper.underLineSecondaryContainer,
-            ),
-          ),
-          SizedBox(height: 25.v),
-          SizedBox(
-            height: 38.v,
-            width: 294.h,
-            child: Stack(
-              alignment: Alignment.topRight,
-              children: [
-                CustomTextFormField(
-                  width: 294.h,
-                  controller: changegatevalueController,
-                  hintText: "Change Gate",
-                  textInputAction: TextInputAction.done,
-                  alignment: Alignment.bottomCenter,
-                  suffix: Container(
-                    margin: EdgeInsets.fromLTRB(30.h, 1.v, 9.h, 1.v),
-                    child: CustomImageView(
-                      imagePath: ImageConstant.imgVectorBlack900,
-                      height: 15.v,
-                      width: 27.h,
-                    ),
+              padding: EdgeInsets.only(left: 15.h, right: 5.h, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Flight Delay",
+                    style: theme.textTheme.titleSmall!
+                        .copyWith(fontWeight: FontWeight.w500),
                   ),
-                  suffixConstraints: BoxConstraints(
-                    maxHeight: 31.v,
-                  ),
-                  contentPadding: EdgeInsets.only(left: 2.h),
-                  borderDecoration:
-                      TextFormFieldStyleHelper.underLineSecondaryContainer,
-                ),
-                CustomSwitch(
-                  margin: EdgeInsets.only(right: 8.h),
-                  alignment: Alignment.topRight,
-                  value: isSelectedSwitch,
-                  onChange: (value) {
-                    isSelectedSwitch = value;
-                  },
-                )
-              ],
-            ),
+                  CustomSwitch(
+                    // margin: EdgeInsets.only(right: 8.h),
+                    height: 1,
+                    alignment: Alignment.topRight,
+                    value: isSelectedSwitch,
+                    onChange: (value) {
+                      setState(() {
+                        isSelectedSwitch = value;
+                      });
+                    },
+                  )
+                ],
+              )),
+          Divider(
+            color: theme.colorScheme.secondaryContainer,
+            indent: 20.h,
           ),
           SizedBox(height: 25.v),
           Padding(
-            padding: EdgeInsets.only(
-              left: 17.h,
-              right: 13.h,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 7.v,
-                    bottom: 2.v,
+              padding: EdgeInsets.only(left: 15.h, right: 5.h, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Change Gate ",
+                    style: theme.textTheme.titleSmall!
+                        .copyWith(fontWeight: FontWeight.w500),
                   ),
-                  child: Text(
+                  CustomSwitch(
+                    // margin: EdgeInsets.only(right: 8.h),
+                    height: 1,
+                    alignment: Alignment.topRight,
+                    value: isSelectedSwitch,
+                    onChange: (value) {
+                      setState(() {
+                        isSelectedSwitch1 = value;
+                      });
+                    },
+                  )
+                ],
+              )),
+          Divider(
+            color: theme.colorScheme.secondaryContainer,
+            indent: 20.h,
+          ),
+          SizedBox(height: 25.v),
+          Padding(
+              padding: EdgeInsets.only(left: 15.h, right: 5.h, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     "Flight Cancellation",
-                    style: theme.textTheme.bodyLarge,
+                    style: theme.textTheme.titleSmall!
+                        .copyWith(fontWeight: FontWeight.w500),
                   ),
-                ),
-                CustomSwitch(
-                  value: isSelectedSwitch1,
-                  onChange: (value) {
-                    isSelectedSwitch1 = value;
-                  },
-                )
-              ],
-            ),
+                  CustomSwitch(
+                    // margin: EdgeInsets.only(right: 8.h),
+                    height: 1,
+                    alignment: Alignment.topRight,
+                    value: isSelectedSwitch,
+                    onChange: (value) {
+                      setState(() {
+                        isSelectedSwitch2 = value;
+                      });
+                    },
+                  )
+                ],
+              )),
+          Divider(
+            color: theme.colorScheme.secondaryContainer,
+            indent: 20.h,
           ),
-          SizedBox(height: 8.v),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Divider(
-              color: theme.colorScheme.secondaryContainer,
-              indent: 20.h,
-            ),
-          ),
-          SizedBox(height: 24.v),
+          SizedBox(height: 25.v),
           Padding(
-            padding: EdgeInsets.only(
-              left: 17.h,
-              right: 13.h,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 5.v,
-                    bottom: 4.v,
-                  ),
-                  child: Text(
+              padding: EdgeInsets.only(left: 15.h, right: 5.h, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     "Schedule",
-                    style: theme.textTheme.bodyLarge,
+                    style: theme.textTheme.titleSmall!
+                        .copyWith(fontWeight: FontWeight.w500),
                   ),
-                ),
-                CustomSwitch(
-                  value: isSelectedSwitch2,
-                  onChange: (value) {
-                    isSelectedSwitch2 = value;
-                  },
-                )
-              ],
-            ),
+                  CustomSwitch(
+                    // margin: EdgeInsets.only(right: 8.h),
+                    height: 1,
+                    alignment: Alignment.topRight,
+                    value: isSelectedSwitch,
+                    onChange: (value) {
+                      setState(() {
+                        isSelectedSwitch3 = value;
+                      });
+                    },
+                  )
+                ],
+              )),
+          Divider(
+            color: theme.colorScheme.secondaryContainer,
+            indent: 20.h,
           ),
-          SizedBox(height: 14.v),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Divider(
-              color: theme.colorScheme.secondaryContainer,
-              indent: 20.h,
-            ),
-          ),
-          SizedBox(height: 19.v),
+          SizedBox(height: 25.v),
           Padding(
-            padding: EdgeInsets.only(
-              left: 17.h,
-              right: 13.h,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 9.v),
-                  child: Text(
-                    "Payment",
-                    style: theme.textTheme.bodyLarge,
+              padding: EdgeInsets.only(left: 15.h, right: 5.h, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Payment ",
+                    style: theme.textTheme.titleSmall!
+                        .copyWith(fontWeight: FontWeight.w500),
                   ),
-                ),
-                CustomSwitch(
-                  value: isSelectedSwitch3,
-                  onChange: (value) {
-                    isSelectedSwitch3 = value;
-                  },
-                )
-              ],
-            ),
-          )
+                  CustomSwitch(
+                    // margin: EdgeInsets.only(right: 8.h),
+                    height: 1,
+                    alignment: Alignment.topRight,
+                    value: isSelectedSwitch,
+                    onChange: (value) {
+                      setState(() {
+                        isSelectedSwitch4 = value;
+                      });
+                    },
+                  )
+                ],
+              )),
         ],
       ),
     );

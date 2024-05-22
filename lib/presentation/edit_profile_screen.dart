@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../../core/app_export.dart';
 import '../../widgets/app_bar/appbar_subtitle.dart';
 import '../../widgets/app_bar/appbar_title_image.dart';
@@ -90,49 +91,23 @@ class EditProfileScreen extends StatelessWidget {
     return CustomAppBar(
       height: 81.v,
       centerTitle: true,
-      title: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 13.h,
-              right: 22.h,
-            ),
-            child: Row(
-              children: [
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgArrowLeftBlack900,
-                  onTap: () {
-                    onTapArrowleftone(context);
-                  },
-                ),
-                AppbarSubtitle(
-                  text: "Profile",
-                  margin: EdgeInsets.only(
-                    left: 115.h,
-                    top: 2.v,
-                    bottom: 4.v,
-                  ),
-                ),
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgFlowbiteDotsV,
-                  margin: EdgeInsets.only(
-                    left: 114.h,
-                    top: 3.v,
-                    bottom: 2.v,
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(height: 32.v),
-          SizedBox(
-            width: 373.h,
-            child: Divider(
-              color: theme.colorScheme.secondaryContainer,
-            ),
-          )
-        ],
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
+      title: Text(
+        "Profile",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
+        )
+      ],
       styleType: Style.bgFill,
     );
   }

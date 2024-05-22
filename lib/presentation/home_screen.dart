@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   TextEditingController returnvalueoneController = TextEditingController();
 
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -366,8 +366,7 @@ class HomeScreen extends StatelessWidget {
   Widget _buildBottomBar(BuildContext context) {
     return CustomBottomBar(
       onChanged: (BottomBarEnum type) {
-        Navigator.pushNamed(
-            navigatorKey.currentContext!, getCurrentRoute(type));
+        Navigator.pushNamed(context, getCurrentRoute(type));
       },
     );
   }
@@ -382,9 +381,9 @@ class HomeScreen extends StatelessWidget {
       case BottomBarEnum.Materialsymbolshomeoutline:
         return "/";
       case BottomBarEnum.Basilnotificationonoutline:
-        return "/";
+        return AppRoutes.notificationScreen;
       case BottomBarEnum.Phuserbold:
-        return "/";
+        return AppRoutes.editProfileScreen;
       default:
         return "/";
     }

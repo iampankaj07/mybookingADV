@@ -42,6 +42,8 @@ class CustomSwitch extends StatelessWidget {
 
   Widget get switchWidget => Switch(
         value: value ?? false,
+        activeColor: Colors.white,
+        activeTrackColor: Colors.black,
         onChanged: (value) {
           onChange(value);
         },

@@ -25,7 +25,7 @@ class AppbarTrailingImage extends StatelessWidget {
         padding: margin ?? EdgeInsets.zero,
         child: CustomImageView(
           imagePath: imagePath!,
-          height: 21.v,
+          height: 30.v,
           width: 12.h,
           fit: BoxFit.contain,
         ),
