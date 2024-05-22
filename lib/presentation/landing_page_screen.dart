@@ -33,29 +33,30 @@ class LandingPageScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    height: 12.v,
-                    margin: EdgeInsets.only(right: 62.h),
-                    child: AnimatedSmoothIndicator(
-                      activeIndex: 0,
-                      count: 3,
-                      effect: ScrollingDotsEffect(
-                        spacing: 13,
-                        activeDotColor: appTheme.black900,
-                        dotColor: appTheme.blueGray10001,
-                        dotHeight: 12.v,
-                        dotWidth: 14.h,
-                      ),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: Container(
+                //     height: 12.v,
+                //     margin: EdgeInsets.only(right: 62.h),
+                //     child: AnimatedSmoothIndicator(
+                //       activeIndex: 0,
+                //       count: 3,
+                //       effect: ScrollingDotsEffect(
+                //         spacing: 13,
+                //         activeDotColor: appTheme.black900,
+                //         dotColor: appTheme.blueGray10001,
+                //         dotHeight: 12.v,
+                //         dotWidth: 14.h,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+
                 Spacer(
                   flex: 48,
                 ),
                 Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   child: Container(
                     height: 244.v,
                     width: 214.h,

@@ -45,6 +45,7 @@ class LoginPanelScreen extends StatelessWidget {
               SizedBox(height: 41.v),
               CustomOutlinedButton(
                 text: "Login",
+                onPressed: () => AppRoutes.homeScreen,
                 margin: EdgeInsets.only(
                   left: 15.h,
                   right: 43.h,
