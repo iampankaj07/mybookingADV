@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_image.dart';
@@ -33,6 +34,48 @@ class _HomeScreenState extends State<HomeScreen> {
     'One Way',
     'Return',
   ];
+  DateTime selectedDate = DateTime.now();
+  DateTime selectedDatetill = DateTime.now();
+  String _day = '';
+  String _month = '';
+  String _abbday = '';
+  String _day1 = '';
+  String _month1 = '';
+  String _abbday1 = '';
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        _day = DateFormat('d').format(picked); // Day of the week
+        _month = DateFormat('MMMM').format(picked); // Month
+        _abbday =
+            (DateFormat('E').format(picked)).toString(); // Week of the year
+      });
+    }
+  }
+
+  Future<void> _selectDatetill(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDatetill,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDatetill) {
+      setState(() {
+        selectedDatetill = picked;
+        _day1 = DateFormat('d').format(picked); // Day of the week
+        _month1 = DateFormat('MMMM').format(picked); // Month
+        _abbday1 =
+            (DateFormat('E').format(picked)).toString(); // Week of the year
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -241,13 +284,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: InkWell(
               onTap: (() {
-                Navigator.pushNamed(context, AppRoutes.seclectDateScreen);
+                // Navigator.pushNamed(context, AppRoutes.seclectDateScreen);
               }),
               child: Row(
                 children: [
-                  Text(
-                    "Fri, May 24",
-                    style: theme.textTheme.bodyMedium,
+                  InkWell(
+                    onTap: () => _selectDate(context),
+                    child: Text(
+                      _abbday == ""
+                          ? "Select date"
+                          : "${_abbday}, ${_month} ${_day} ",
+                      style: theme.textTheme.bodyMedium,
+                    ),
                   ),
                   Spacer(
                     flex: 50,
@@ -259,9 +307,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Spacer(
                     flex: 22,
                   ),
-                  Text(
-                    "Sat, May 25",
-                    style: theme.textTheme.bodyMedium,
+                  InkWell(
+                    onTap: () => _selectDatetill(context),
+                    child: Text(
+                      _abbday1 == ""
+                          ? "Select date"
+                          : "${_abbday1}, ${_month1} ${_day1} ",
+                      style: theme.textTheme.bodyMedium,
+                    ),
                   ),
                   Spacer(
                     flex: 26,

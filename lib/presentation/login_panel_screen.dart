@@ -5,16 +5,21 @@ import '../../widgets/custom_outlined_button.dart';
 import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
-class LoginPanelScreen extends StatelessWidget {
+class LoginPanelScreen extends StatefulWidget {
   LoginPanelScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<LoginPanelScreen> createState() => _LoginPanelScreenState();
+}
+
+class _LoginPanelScreenState extends State<LoginPanelScreen> {
   TextEditingController userNameController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
-
+  bool obsecure = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,8 +50,22 @@ class LoginPanelScreen extends StatelessWidget {
               SizedBox(height: 41.v),
               CustomOutlinedButton(
                 text: "Login",
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.homeScreen),
+                onPressed: () {
+                  if (userNameController.text == "test@gmail.com" &&
+                      passwordController.text == "test123") {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.homeScreen,
+                      (Route<dynamic> route) => false,
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text('Invalid credentials')),
+                    );
+                  }
+                },
                 margin: EdgeInsets.only(
                   left: 15.h,
                   right: 43.h,
@@ -177,18 +196,25 @@ class LoginPanelScreen extends StatelessWidget {
             child: CustomTextFormField(
               controller: passwordController,
               textInputAction: TextInputAction.done,
-              suffix: Container(
-                margin: EdgeInsets.fromLTRB(30.h, 8.v, 10.h, 7.v),
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgPheyeclosed,
-                  height: 30.v,
-                  width: 35.h,
+              suffix: InkWell(
+                onTap: () {
+                  setState(() {
+                    obsecure = !obsecure;
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(30.h, 8.v, 10.h, 7.v),
+                  child: CustomImageView(
+                    imagePath: ImageConstant.imgPheyeclosed,
+                    height: 30.v,
+                    width: 35.h,
+                  ),
                 ),
               ),
               suffixConstraints: BoxConstraints(
                 maxHeight: 45.v,
               ),
-              obscureText: true,
+              obscureText: obsecure,
             ),
           )
         ],

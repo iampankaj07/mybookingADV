@@ -6,7 +6,7 @@ import '../../widgets/app_bar/custom_app_bar.dart';
 import 'widgets/languageslist_item_widget.dart';
 
 class LanguagesScreen extends StatelessWidget {
-  const LanguagesScreen({Key? key})
+  LanguagesScreen({Key? key})
       : super(
           key: key,
         );
@@ -42,9 +42,43 @@ class LanguagesScreen extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: 12,
+              itemCount: 6,
               itemBuilder: (context, index) {
-                return LanguageslistItemWidget();
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomImageView(
+                      imagePath: images[index],
+                      height: 29.adaptSize,
+                      width: 29.adaptSize,
+                      margin: EdgeInsets.only(bottom: 10.v),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 15.h,
+                        top: 6.v,
+                        bottom: 12.v,
+                      ),
+                      child: Text(
+                        country[index],
+                        style: CustomTextStyles.bodyLargeRobotoLightblueA70001,
+                      ),
+                    ),
+                    Spacer(),
+                    index == 0
+                        ? CustomImageView(
+                            imagePath: ImageConstant.imgCheckmark,
+                            height: 24.adaptSize,
+                            width: 24.adaptSize,
+                            margin: EdgeInsets.only(
+                              top: 3.v,
+                              right: 16.h,
+                              bottom: 10.v,
+                            ),
+                          )
+                        : Text("")
+                  ],
+                );
               },
             ),
           ),
@@ -53,7 +87,24 @@ class LanguagesScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
+  List images = [
+    ImageConstant.imgThumbsUp,
+    ImageConstant.imgTwemojiFlagNepal,
+    ImageConstant.imgTelevisionIndigo600,
+    ImageConstant.imgTelevisionRed700,
+    ImageConstant.imgUserRedA20029x29,
+    ImageConstant.imgUserRedA200,
+  ];
+  List country = [
+    "English",
+    "Nepalese",
+    "Thailand",
+    "Spanish",
+    "German",
+    "Portuguese"
+  ];
+
+  /// Setion Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
       // height: 81.v,

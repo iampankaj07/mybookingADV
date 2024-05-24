@@ -16,6 +16,8 @@ dependencies:
   dotted_border: ^2.1.0
   intl: ^0.18.0
   connectivity_plus: ^5.0.2
+  syncfusion_flutter_datepicker: ^25.2.5
+  # syncfusion_flutter_datepicker: ^25.2.5
 dev_dependencies: 
   flutter_test: 
     sdk: flutter

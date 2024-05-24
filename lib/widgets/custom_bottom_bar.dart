@@ -47,8 +47,8 @@ class CustomBottomBarState extends State<CustomBottomBar> {
       type: BottomBarEnum.Basilnotificationonoutline,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgPhUserBold,
-      activeIcon: ImageConstant.imgPhUserBold,
+      icon: ImageConstant.imgsettingnav,
+      activeIcon: ImageConstant.imgsettingnav,
       type: BottomBarEnum.Phuserbold,
     )
   ];

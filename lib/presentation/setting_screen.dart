@@ -258,7 +258,7 @@ class SettingScreen extends StatelessWidget {
             context,
             passwordImage: ImageConstant.imgClarityLogoutSolid,
             changePasswordText: "Log Out",
-            onTapPasswordImage: () {
+            onTapArrowright: () {
               onTapPasswordImage(context);
             },
           )
@@ -370,6 +370,10 @@ class SettingScreen extends StatelessWidget {
 
   /// Navigates to the landingPageScreen when the action is triggered.
   onTapPasswordImage(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.landingPageScreen);
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      AppRoutes.loginPanelScreen,
+      (Route<dynamic> route) => false,
+    );
   }
 }
