@@ -48,11 +48,14 @@ class SearchPlaceScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 17.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.h),
-                      child: Text(
-                        "Mascot, Sydney, AUS",
-                        style: theme.textTheme.bodyMedium,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16.h),
+                        child: Text(
+                          "Vietnam, HAN",
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(height: 40.v),
@@ -64,35 +67,47 @@ class SearchPlaceScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.h),
-                      child: Text(
-                        "London, United Kingdom (6 airports)",
-                        style: theme.textTheme.bodyMedium,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16.h),
+                        child: Text(
+                          "London, United Kingdom (6 airports)",
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.h),
-                      child: Text(
-                        "New York City, New York (3 airports)",
-                        style: theme.textTheme.bodyMedium,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16.h),
+                        child: Text(
+                          "New York City, New York (3 airports)",
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.h),
-                      child: Text(
-                        "Chicago, Illinois (3 airports)",
-                        style: theme.textTheme.bodyMedium,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16.h),
+                        child: Text(
+                          "Chicago, Illinois (3 airports)",
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.h),
-                      child: Text(
-                        "Hanoi, Vietnam (3 airports)",
-                        style: theme.textTheme.bodyMedium,
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16.h),
+                        child: Text(
+                          "Hanoi, Vietnam (3 airports)",
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(height: 47.v)

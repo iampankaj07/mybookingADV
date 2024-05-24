@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'One Way',
     'Return',
   ];
+
   DateTime selectedDate = DateTime.now();
   DateTime selectedDatetill = DateTime.now();
   String _day = '';
@@ -246,9 +247,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               bottom: 7.v,
                             ),
                             child: Text(
-                              "Where you to go?",
-                              style:
-                                  CustomTextStyles.titleMediumPrimaryContainer,
+                              "Vietnam(HAN)",
+                              style: theme.textTheme.titleMedium,
                             ),
                           ),
                         )
