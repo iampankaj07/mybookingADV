@@ -5,7 +5,7 @@ import '../../widgets/app_bar/appbar_subtitle_three.dart';
 import '../../widgets/app_bar/appbar_subtitle_two.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../../widgets/custom_checkbox_button.dart';
-import '../../widgets/custom_text_form_field.dart';
+import '../../widgets/customtextfieln_noborder.dart';
 import 'widgets/viewhierarchy_item_widget.dart'; // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
@@ -50,7 +50,7 @@ class AddPassengerScreen extends StatelessWidget {
         body: Form(
           key: _formKey,
           child: SizedBox(
-            width: 375.h,
+            // width: 375.h,
             child: Column(
               children: [
                 _buildAppBar(context),
@@ -81,40 +81,37 @@ class AddPassengerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildAppBar(BuildContext context) {
-    return Column(
-      children: [
-        CustomAppBar(
-          leadingWidth: 21.h,
-          leading: AppbarLeadingImage(
-            imagePath: ImageConstant.imgArrowLeft,
-            margin: EdgeInsets.only(
-              left: 9.h,
-              top: 11.v,
-              bottom: 11.v,
-            ),
-            onTap: () {
-              onTapArrowleftone(context);
-            },
-          ),
-          centerTitle: true,
-          title: AppbarSubtitleThree(
-            text: "Add Passenger",
-          ),
-          actions: [
-            AppbarSubtitleTwo(
-              text: "Done",
-              margin: EdgeInsets.fromLTRB(17.h, 9.v, 17.h, 14.v),
-            )
-          ],
-          styleType: Style.bgShadow,
+    return AppBar(
+      // height: 81.v,
+      centerTitle: true,
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Add Passenger",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
+      ),
+      actions: [
+        AppbarSubtitleTwo(
+          text: "Done",
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.overviewScreen);
+          },
+          margin: EdgeInsets.fromLTRB(17.h, 9.v, 17.h, 14.v),
         )
       ],
+      // styleType: Style.bgFill,
     );
   }
 
   /// Section Widget
   Widget _buildSurnameEditText(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: surnameEditTextController,
       hintText: "John",
     );
@@ -122,7 +119,7 @@ class AddPassengerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildNameEditText(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: nameEditTextController,
       hintText: "eg. mid",
     );
@@ -138,7 +135,7 @@ class AddPassengerScreen extends StatelessWidget {
           style: theme.textTheme.bodySmall,
         ),
         SizedBox(height: 11.v),
-        CustomTextFormField(
+        CustomTextFormFieldNoB(
           controller: nameController,
           hintText: "eg. Dae",
         )
@@ -156,7 +153,7 @@ class AddPassengerScreen extends StatelessWidget {
           style: theme.textTheme.bodySmall,
         ),
         SizedBox(height: 8.v),
-        CustomTextFormField(
+        CustomTextFormFieldNoB(
           width: 163.h,
           controller: settingsController,
           hintText: "Famale",
@@ -192,7 +189,7 @@ class AddPassengerScreen extends StatelessWidget {
         _buildGenderColumn(context),
         Padding(
           padding: EdgeInsets.only(top: 21.v),
-          child: CustomTextFormField(
+          child: CustomTextFormFieldNoB(
             width: 163.h,
             controller: genderController,
             hintText: "Male",
@@ -228,7 +225,7 @@ class AddPassengerScreen extends StatelessWidget {
           style: theme.textTheme.bodySmall,
         ),
         SizedBox(height: 11.v),
-        CustomTextFormField(
+        CustomTextFormFieldNoB(
           controller: dateOfBirthController,
           hintText: "Pick your date of birth",
         )
@@ -238,7 +235,7 @@ class AddPassengerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildCountryEditText(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: countryEditTextController,
       hintText: "Select a Country or Region",
     );
@@ -246,7 +243,7 @@ class AddPassengerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildPassportEditText(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: passportEditTextController,
       hintText: "Passport",
       hintStyle: CustomTextStyles.bodyMediumBlack900,
@@ -256,7 +253,7 @@ class AddPassengerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildIdNumberEditText(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: idNumberEditTextController,
       hintText: "Number of Passport or ID",
       textInputAction: TextInputAction.done,
@@ -354,7 +351,7 @@ class AddPassengerScreen extends StatelessWidget {
           ),
           SizedBox(height: 17.v),
           SizedBox(
-            height: 244.v,
+            height: 265.v,
             width: 343.h,
             child: Stack(
               alignment: Alignment.topCenter,

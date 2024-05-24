@@ -4,6 +4,7 @@ import 'package:mybookingadv/presentation/app_navigation_screen.dart';
 import 'package:mybookingadv/presentation/change_password_screen.dart';
 import 'package:mybookingadv/presentation/confirm_screen.dart';
 import 'package:mybookingadv/presentation/edit_profile_screen.dart';
+import 'package:mybookingadv/presentation/flight_results_page.dart';
 import 'package:mybookingadv/presentation/flight_results_tab_container_screen.dart';
 import 'package:mybookingadv/presentation/help_support_screen.dart';
 import 'package:mybookingadv/presentation/home_screen.dart';
@@ -86,6 +87,7 @@ class AppRoutes {
     homeScreen: (context) => HomeScreen(),
     searchPlaceScreen: (context) => SearchPlaceScreen(),
     seclectDateScreen: (context) => SeclectDateScreen(),
+    flightResultsPage: (context) => FlightResultsPage(),
     flightResultsTabContainerScreen: (context) =>
         FlightResultsTabContainerScreen(),
     addPassengerScreen: (context) => AddPassengerScreen(),

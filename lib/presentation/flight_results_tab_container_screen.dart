@@ -37,7 +37,7 @@ class FlightResultsTabContainerScreenState
       child: Scaffold(
         backgroundColor: appTheme.gray10002,
         body: SizedBox(
-          width: 375.h,
+          width: double.infinity,
           child: Column(
             children: [
               _buildStackView(context),
@@ -76,8 +76,8 @@ class FlightResultsTabContainerScreenState
   /// Section Widget
   Widget _buildStackView(BuildContext context) {
     return SizedBox(
-      height: 272.v,
-      width: 375.h,
+      // height: 272.v,
+      // width: 375.h,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -112,33 +112,30 @@ class FlightResultsTabContainerScreenState
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CustomAppBar(
+                  AppBar(
                     leadingWidth: 21.h,
-                    leading: AppbarLeadingImage(
-                      imagePath: ImageConstant.imgArrowLeft,
-                      margin: EdgeInsets.only(
-                        left: 9.h,
-                        top: 11.v,
-                        bottom: 11.v,
-                      ),
-                      onTap: () {
-                        onTapArrowleftone(context);
-                      },
-                    ),
+                    // leading: AppbarLeadingImage(
+                    //   imagePath: ImageConstant.imgArrowLeft,
+                    //   margin: EdgeInsets.only(
+                    //     left: 9.h,
+                    //     top: 11.v,
+                    //     bottom: 11.v,
+                    //   ),
+                    //   onTap: () {
+                    //     onTapArrowleftone(context);
+                    //   },
+                    // ),
                     title: AppbarSubtitleThree(
                       text: "SIN - HAN",
                       margin: EdgeInsets.only(left: 119.h),
                     ),
                     actions: [
-                      AppbarTrailingImage(
-                        imagePath: ImageConstant.imgFilter,
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 10.h,
-                          vertical: 12.v,
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.filter_alt_outlined),
                       )
                     ],
-                    styleType: Style.bgFill_2,
+                    // styleType: Style.bgFill_2,
                   ),
                   SizedBox(height: 24.v),
                   Padding(

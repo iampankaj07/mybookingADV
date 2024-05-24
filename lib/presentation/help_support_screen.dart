@@ -47,28 +47,28 @@ class HelpSupportScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildAppBar(BuildContext context) {
-    return Column(
-      children: [
-        CustomAppBar(
-          leadingWidth: 21.h,
-          leading: AppbarLeadingImage(
-            imagePath: ImageConstant.imgArrowLeft,
-            margin: EdgeInsets.only(
-              left: 9.h,
-              top: 11.v,
-              bottom: 11.v,
-            ),
-            onTap: () {
-              onTapArrowleftone(context);
-            },
-          ),
-          centerTitle: true,
-          title: AppbarSubtitleThree(
-            text: "Customer Support",
-          ),
-          styleType: Style.bgShadow,
+    return AppBar(
+      // height: 81.v,
+      centerTitle: true,
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Customer Support",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
         )
       ],
+      // styleType: Style.bgFill,
     );
   }
 

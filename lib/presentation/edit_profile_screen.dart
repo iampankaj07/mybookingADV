@@ -88,19 +88,25 @@ class EditProfileScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      height: 81.v,
+    return AppBar(
+      // height: 81.v,
       centerTitle: true,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        onPressed: () {
-          Navigator.pop(context);
-        },
+      flexibleSpace: Container(
+        height: 2,
+        width: 373.h,
+        margin: EdgeInsets.only(
+          left: 9.82.h,
+          top: 80.5.v,
+          right: 10.179993.h,
+        ),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.secondaryContainer,
+        ),
       ),
       title: Text(
         "Profile",
         style:
-            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500),
       ),
       actions: [
         Padding(
@@ -108,7 +114,7 @@ class EditProfileScreen extends StatelessWidget {
           child: Icon(Icons.more_vert),
         )
       ],
-      styleType: Style.bgFill,
+      // styleType: Style.bgFill,
     );
   }
 

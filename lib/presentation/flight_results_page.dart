@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 import '../../core/app_export.dart';
 import 'widgets/flightdetails_item_widget.dart';
@@ -66,7 +68,11 @@ class FlightResultsPageState extends State<FlightResultsPage>
         },
         itemCount: 6,
         itemBuilder: (context, index) {
-          return FlightdetailsItemWidget();
+          return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.addPassengerScreen);
+              },
+              child: FlightdetailsItemWidget());
         },
       ),
     );
@@ -89,21 +95,45 @@ class FlightResultsPageState extends State<FlightResultsPage>
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          Flexible(
             child: SizedBox(
-              height: 60.v,
+              // width: 30,
+              height: 78.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                // padding: EdgeInsets.only(bottom: 5),
                 separatorBuilder: (context, index) {
                   return SizedBox(
-                    width: 12.h,
+                    width: 20.h,
                   );
                 },
                 itemCount: 6,
                 itemBuilder: (context, index) {
-                  return ListdecItemWidget();
+                  return SizedBox(
+                    width: 25.h,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 7.v),
+                      child: Column(
+                        children: [
+                          Text(
+                            "DEC",
+                            style: theme.textTheme.bodySmall,
+                          ),
+                          Text(
+                            "${(22 + index).toString()}",
+                            style: theme.textTheme.titleMedium,
+                          ),
+                          Text(
+                            "\$110",
+                            style: CustomTextStyles.bodySmallPrimaryContainer,
+                          )
+                        ],
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
@@ -112,6 +142,9 @@ class FlightResultsPageState extends State<FlightResultsPage>
             imagePath: ImageConstant.imgArrowRightBlack900,
             height: 24.adaptSize,
             width: 24.adaptSize,
+            onTap: (() {
+              Navigator.pushNamed(context, AppRoutes.addPassengerScreen);
+            }),
             margin: EdgeInsets.only(
               left: 25.h,
               top: 18.v,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mybookingadv/widgets/customtextfieln_noborder.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
 import '../../widgets/app_bar/appbar_subtitle_one.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../../widgets/custom_elevated_button.dart';
-import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
+// import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
 class PaymentScreen extends StatelessWidget {
@@ -31,8 +32,8 @@ class PaymentScreen extends StatelessWidget {
         backgroundColor: appTheme.gray10002,
         resizeToAvoidBottomInset: false,
         body: SizedBox(
-          width: 375.h,
-          child: Column(
+          // width: 375.h,
+          child: Stack(
             children: [
               _buildAppBar(context),
               Expanded(
@@ -41,11 +42,15 @@ class PaymentScreen extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 5.v),
                     child: Column(
                       children: [
+                        SizedBox(height: 100.v),
                         _buildColumnView(context),
                         SizedBox(height: 27.v),
                         _buildColumnCreditCard(context),
                         SizedBox(height: 16.v),
-                        _buildYourCardIs(context)
+                        _buildYourCardIs(context),
+                        SizedBox(
+                          height: 40,
+                        ),
                       ],
                     ),
                   ),
@@ -62,25 +67,30 @@ class PaymentScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildAppBar(BuildContext context) {
     return Container(
+      height: 180,
       decoration: AppDecoration.fillLightBlueA,
-      child: CustomAppBar(
+      child: AppBar(
+        backgroundColor: appTheme.lightBlueA70001,
         leadingWidth: 21.h,
-        leading: AppbarLeadingImage(
-          imagePath: ImageConstant.imgArrowLeftOnprimarycontainer,
-          margin: EdgeInsets.only(
-            left: 9.h,
-            top: 11.v,
-            bottom: 11.v,
-          ),
-          onTap: () {
-            onTapArrowleftone(context);
-          },
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
         ),
+        // leading: AppbarLeadingImage(
+        //   imagePath: ImageConstant.imgArrowLeftOnprimarycontainer,
+        //   margin: EdgeInsets.only(
+        //     left: 9.h,
+        //     top: 11.v,
+        //     bottom: 11.v,
+        //   ),
+        //   onTap: () {
+        //     onTapArrowleftone(context);
+        //   },
+        // ),
         centerTitle: true,
         title: AppbarSubtitleOne(
           text: "Payment",
         ),
-        styleType: Style.bgFill_3,
+        // styleType: Style.bgFill_3,
       ),
     );
   }
@@ -92,7 +102,7 @@ class PaymentScreen extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 250.v,
+            // height: 250.v,
             width: 343.h,
             child: Stack(
               alignment: Alignment.center,
@@ -365,7 +375,7 @@ class PaymentScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildCardHolder(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: cardHolderController,
       hintText: "eg. John dae",
     );
@@ -373,7 +383,7 @@ class PaymentScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildCardNumber(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       controller: cardNumberController,
       hintText: "0000 - 0000 - 0000 - 0000",
       hintStyle: CustomTextStyles.bodyMediumPrimaryContainer,
@@ -382,7 +392,7 @@ class PaymentScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildExpiryDate(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       width: 163.h,
       controller: expiryDateController,
       hintText: "mm / yy",
@@ -391,7 +401,7 @@ class PaymentScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildCvc(BuildContext context) {
-    return CustomTextFormField(
+    return CustomTextFormFieldNoB(
       width: 163.h,
       controller: cvcController,
       hintText: "---",
@@ -480,7 +490,7 @@ class PaymentScreen extends StatelessWidget {
   Widget _buildYourCardIs(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.h),
-      child: CustomTextFormField(
+      child: CustomTextFormFieldNoB(
         controller: yourCardIsController,
         hintText:
             "Your card is secured by Stripe. We do not store your credit card infomation.",
@@ -500,6 +510,9 @@ class PaymentScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildPayNow(BuildContext context) {
     return CustomElevatedButton(
+      onPressed: () {
+        onTapRowtotal1adult(context);
+      },
       height: 40.v,
       width: 116.h,
       text: "Pay now",
@@ -509,21 +522,17 @@ class PaymentScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildColumnpaynow(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 16.h,
-        right: 16.h,
-        bottom: 9.v,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GestureDetector(
-            onTap: () {
-              onTapRowtotal1adult(context);
-            },
-            child: Container(
-              decoration: AppDecoration.outlineBlack900,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GestureDetector(
+          onTap: () {
+            onTapRowtotal1adult(context);
+          },
+          child: Container(
+            decoration: AppDecoration.outlineBlack900,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -551,9 +560,9 @@ class PaymentScreen extends StatelessWidget {
                 ],
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 

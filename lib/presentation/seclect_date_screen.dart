@@ -35,8 +35,8 @@ class SeclectDateScreen extends StatelessWidget {
                       children: [
                         _buildRowmon(context),
                         _buildCalendar(context),
-                        SizedBox(height: 23.v),
-                        _buildCalendarone(context)
+                        // SizedBox(height: 23.v),
+                        // _buildCalendarone(context)
                       ],
                     ),
                   ),
@@ -45,59 +45,35 @@ class SeclectDateScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: _buildBottombar(context),
+        // bottomNavigationBar: _buildBottombar(context),
       ),
     );
   }
 
   /// Section Widget
   Widget _buildIphonexbarsn(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(right: 1.h),
-          padding: EdgeInsets.symmetric(
-            horizontal: 9.h,
-            vertical: 8.v,
-          ),
-          decoration: AppDecoration.outlineBlack900,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgArrowLeft,
-                height: 21.v,
-                width: 12.h,
-                margin: EdgeInsets.symmetric(vertical: 2.v),
-                onTap: () {
-                  onTapImgArrowleftone(context);
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 125.h,
-                  bottom: 6.v,
-                ),
-                child: Text(
-                  "Pick a Date",
-                  style: CustomTextStyles.titleMediumOnPrimary,
-                ),
-              )
-            ],
-          ),
-        ),
-        CustomAppBar(
-          height: 2.v,
-          centerTitle: true,
-          title: SizedBox(
-            width: 376.h,
-            child: Divider(
-              color: appTheme.indigo50,
-            ),
-          ),
-          styleType: Style.bgFill_1,
-        )
-      ],
+    return AppBar(
+      // height: 81.v,
+      centerTitle: true,
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Pick a Date",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
+      ),
+      // actions: [
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Icon(Icons.more_vert),
+      //   )
+      // ],
+      // // styleType: Style.bgFill,
     );
   }
 

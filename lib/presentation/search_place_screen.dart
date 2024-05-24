@@ -22,7 +22,7 @@ class SearchPlaceScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        // appBar: _buildAppBar(context),
         body: Container(
           width: 399.h,
           padding: EdgeInsets.symmetric(vertical: 9.v),
@@ -103,7 +103,7 @@ class SearchPlaceScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: _buildBottomBar(context),
+        // bottomNavigationBar: _buildBottomBar(context),
       ),
     );
   }

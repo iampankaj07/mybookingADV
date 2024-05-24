@@ -37,54 +37,78 @@ class SettingScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      height: 81.v,
+    return AppBar(
+      // height: 81.v,
       centerTitle: true,
-      title: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 13.h,
-              right: 22.h,
-            ),
-            child: Row(
-              children: [
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgArrowLeftBlack900,
-                  onTap: () {
-                    onTapArrowleftone(context);
-                  },
-                ),
-                AppbarSubtitle(
-                  text: "settings",
-                  margin: EdgeInsets.only(
-                    left: 108.h,
-                    top: 4.v,
-                    bottom: 2.v,
-                  ),
-                ),
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgFlowbiteDotsV,
-                  margin: EdgeInsets.only(
-                    left: 107.h,
-                    top: 3.v,
-                    bottom: 2.v,
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(height: 32.v),
-          SizedBox(
-            width: 373.h,
-            child: Divider(
-              color: theme.colorScheme.secondaryContainer,
-            ),
-          )
-        ],
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Setting",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
       ),
-      styleType: Style.bgFill,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
+        )
+      ],
+      // styleType: Style.bgFill,
     );
+
+    // CustomAppBar(
+    //   height: 81.v,
+    //   centerTitle: true,
+    //   title: Column(
+    //     children: [
+    //       Padding(
+    //         padding: EdgeInsets.only(
+    //           left: 13.h,
+    //           right: 22.h,
+    //         ),
+    //         child: Row(
+    //           children: [
+    //             AppbarTitleImage(
+    //               imagePath: ImageConstant.imgArrowLeftBlack900,
+    //               onTap: () {
+    //                 onTapArrowleftone(context);
+    //               },
+    //             ),
+    //             AppbarSubtitle(
+    //               text: "settings",
+    //               margin: EdgeInsets.only(
+    //                 left: 108.h,
+    //                 top: 4.v,
+    //                 bottom: 2.v,
+    //               ),
+    //             ),
+    //             AppbarTitleImage(
+    //               imagePath: ImageConstant.imgFlowbiteDotsV,
+    //               margin: EdgeInsets.only(
+    //                 left: 107.h,
+    //                 top: 3.v,
+    //                 bottom: 2.v,
+    //               ),
+    //             )
+    //           ],
+    //         ),
+    //       ),
+    //       SizedBox(height: 32.v),
+    //       SizedBox(
+    //         width: 373.h,
+    //         child: Divider(
+    //           color: theme.colorScheme.secondaryContainer,
+    //         ),
+    //       )
+    //     ],
+    //   ),
+    //   styleType: Style.bgFill,
+    // );
   }
 
   /// Section Widget
@@ -101,7 +125,7 @@ class SettingScreen extends StatelessWidget {
               style: CustomTextStyles.titleMediumInter,
             ),
           ),
-          SizedBox(height: 43.v),
+          SizedBox(height: 20.v),
           Padding(
             padding: EdgeInsets.only(left: 5.h),
             child: _buildChangePassword(
@@ -113,7 +137,7 @@ class SettingScreen extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 30.v),
+          SizedBox(height: 15.v),
           Padding(
             padding: EdgeInsets.only(left: 2.h),
             child: _buildChangePassword(
@@ -125,7 +149,7 @@ class SettingScreen extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 30.v),
+          SizedBox(height: 15.v),
           _buildChangePassword(
             context,
             passwordImage: ImageConstant.imgMingcuteNotificationFill,
@@ -134,56 +158,62 @@ class SettingScreen extends StatelessWidget {
               onTapArrowrightfive(context);
             },
           ),
-          SizedBox(height: 30.v),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 11.h,
-              vertical: 12.v,
-            ),
-            decoration: AppDecoration.fillBlueGray.copyWith(
-              borderRadius: BorderRadiusStyle.roundedBorder15,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgIcRoundLanguage,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  margin: EdgeInsets.only(left: 9.h),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 17.h,
-                    top: 3.v,
+          SizedBox(height: 15.v),
+          InkWell(
+            onTap: () {
+              onTapImgArrowright1(context);
+            },
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                horizontal: 11.h,
+                vertical: 12.v,
+              ),
+              decoration: AppDecoration.fillBlueGray.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder15,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomImageView(
+                    imagePath: ImageConstant.imgIcRoundLanguage,
+                    height: 24.adaptSize,
+                    width: 24.adaptSize,
+                    margin: EdgeInsets.only(left: 9.h),
                   ),
-                  child: Text(
-                    "Language",
-                    style: theme.textTheme.bodyLarge,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 17.h,
+                      top: 3.v,
+                    ),
+                    child: Text(
+                      "Language",
+                      style: theme.textTheme.bodyLarge,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 93.h,
-                    top: 4.v,
-                    bottom: 4.v,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 93.h,
+                      top: 4.v,
+                      bottom: 4.v,
+                    ),
+                    child: Text(
+                      "Default",
+                      style: CustomTextStyles.bodySmallInterBlack900,
+                    ),
                   ),
-                  child: Text(
-                    "Default",
-                    style: CustomTextStyles.bodySmallInterBlack900,
-                  ),
-                ),
-                CustomImageView(
-                  imagePath: ImageConstant.imgArrowRight,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  margin: EdgeInsets.only(left: 19.h),
-                  onTap: () {
-                    onTapImgArrowright1(context);
-                  },
-                )
-              ],
+                  CustomImageView(
+                    imagePath: ImageConstant.imgArrowRight,
+                    height: 24.adaptSize,
+                    width: 24.adaptSize,
+                    margin: EdgeInsets.only(left: 19.h),
+                    onTap: () {
+                      onTapImgArrowright1(context);
+                    },
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -214,7 +244,7 @@ class SettingScreen extends StatelessWidget {
               onTapArrowrightnine(context);
             },
           ),
-          SizedBox(height: 24.v),
+          SizedBox(height: 15.v),
           _buildChangePassword(
             context,
             passwordImage: ImageConstant.imgWpfAskQuestion,
@@ -223,7 +253,7 @@ class SettingScreen extends StatelessWidget {
               onTapArrowright1(context);
             },
           ),
-          SizedBox(height: 24.v),
+          SizedBox(height: 15.v),
           _buildChangePassword(
             context,
             passwordImage: ImageConstant.imgClarityLogoutSolid,
@@ -245,56 +275,60 @@ class SettingScreen extends StatelessWidget {
     Function? onTapPasswordImage,
     Function? onTapArrowright,
   }) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 13.h,
-        vertical: 10.v,
-      ),
-      decoration: AppDecoration.fillBlueGray.copyWith(
-        borderRadius: BorderRadiusStyle.roundedBorder15,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CustomImageView(
-            imagePath: passwordImage,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.only(
-              left: 5.h,
-              top: 2.v,
+    return InkWell(
+      onTap: () {
+        onTapArrowright?.call();
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: 13.h,
+          vertical: 10.v,
+        ),
+        decoration: AppDecoration.fillBlueGray.copyWith(
+          borderRadius: BorderRadiusStyle.roundedBorder15,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomImageView(
+              imagePath: passwordImage,
+              height: 24.adaptSize,
+              width: 24.adaptSize,
+              margin: EdgeInsets.only(
+                left: 5.h,
+                top: 2.v,
+              ),
+              onTap: () {
+                onTapPasswordImage?.call();
+              },
             ),
-            onTap: () {
-              onTapPasswordImage?.call();
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 17.h,
-              top: 7.v,
-            ),
-            child: Text(
-              changePasswordText,
-              style: theme.textTheme.bodyLarge!.copyWith(
-                color: appTheme.black900,
+            Padding(
+              padding: EdgeInsets.only(
+                left: 17.h,
+                top: 7.v,
+              ),
+              child: Text(
+                changePasswordText,
+                style: theme.textTheme.bodyLarge!.copyWith(
+                  color: appTheme.black900,
+                ),
               ),
             ),
-          ),
-          CustomImageView(
-            imagePath: ImageConstant.imgArrowRight,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.only(
-              left: 92.h,
-              top: 2.v,
-            ),
-            onTap: () {
-              onTapArrowright?.call();
-            },
-          )
-        ],
+            Spacer(),
+            CustomImageView(
+              imagePath: ImageConstant.imgArrowRight,
+              height: 24.adaptSize,
+              width: 24.adaptSize,
+              margin: EdgeInsets.only(
+                left: 92.h,
+                top: 2.v,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

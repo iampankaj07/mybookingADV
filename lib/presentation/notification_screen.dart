@@ -61,15 +61,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      height: 81.v,
+    return AppBar(
+      // height: 81.v,
       centerTitle: true,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     Navigator.pop(context);
+      //   },
+      // ),
       title: Text(
         "Notification",
         style:
@@ -81,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           child: Icon(Icons.more_vert),
         )
       ],
-      styleType: Style.bgFill,
+      // styleType: Style.bgFill,
     );
   }
 

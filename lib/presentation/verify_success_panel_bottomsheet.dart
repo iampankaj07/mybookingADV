@@ -65,6 +65,6 @@ class VerifySuccessPanelBottomsheet extends StatelessWidget {
 
   /// Navigates to the searchPageContainerScreen when the action is triggered.
   onTapGotodashboard(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.searchPageContainerScreen);
+    Navigator.pushNamed(context, AppRoutes.homeScreen);
   }
 }

@@ -87,53 +87,28 @@ class ChangePasswordScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      height: 81.v,
+    return AppBar(
+      // height: 81.v,
       centerTitle: true,
-      title: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 13.h,
-              right: 22.h,
-            ),
-            child: Row(
-              children: [
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgArrowLeftBlack900,
-                  onTap: () {
-                    onTapArrowleftone(context);
-                  },
-                ),
-                AppbarSubtitle(
-                  text: "Change Password",
-                  margin: EdgeInsets.only(
-                    left: 67.h,
-                    top: 4.v,
-                    bottom: 2.v,
-                  ),
-                ),
-                AppbarTitleImage(
-                  imagePath: ImageConstant.imgFlowbiteDotsV,
-                  margin: EdgeInsets.only(
-                    left: 65.h,
-                    top: 3.v,
-                    bottom: 2.v,
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(height: 32.v),
-          SizedBox(
-            width: 373.h,
-            child: Divider(
-              color: theme.colorScheme.secondaryContainer,
-            ),
-          )
-        ],
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Change Password",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
       ),
-      styleType: Style.bgFill,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
+        )
+      ],
+      // styleType: Style.bgFill,
     );
   }
 

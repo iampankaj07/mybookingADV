@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_image.dart';
@@ -10,16 +11,28 @@ import '../../widgets/custom_text_form_field.dart';
 import 'search_page_container1_page.dart'; // ignore_for_file: must_be_immutable
 
 // ignore_for_file: must_be_immutable
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   TextEditingController returnvalueoneController = TextEditingController();
 
   GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+  // Initial Selected Value
+  String dropdownvalue = 'One Way';
 
+  // List of items in our dropdown menu
+  var items = [
+    'One Way',
+    'Return',
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,7 +73,8 @@ class HomeScreen extends StatelessWidget {
                           text: "Search",
                           buttonStyle: CustomButtonStyles.fillLightBlueA,
                           onPressed: () {
-                            onTapSearch(context);
+                            Navigator.pushNamed(context,
+                                AppRoutes.flightResultsTabContainerScreen);
                           },
                         ),
                         SizedBox(height: 287.v),
@@ -96,19 +110,17 @@ class HomeScreen extends StatelessWidget {
       height: 56.v,
       actions: [
         Container(
-          margin: EdgeInsets.fromLTRB(18.h, 4.v, 18.h, 3.v),
-          decoration: AppDecoration.fillBluegray100.copyWith(
-            borderRadius: BorderRadiusStyle.circleBorder24,
-          ),
-          child: Column(
-            children: [
-              SizedBox(height: 2.v),
-              AppbarImage(
-                imagePath: ImageConstant.imgIconamoonProfileFillBlack900,
-              )
-            ],
-          ),
-        )
+            margin: EdgeInsets.fromLTRB(18.h, 4.v, 18.h, 3.v),
+            decoration: BoxDecoration(
+                color: appTheme.gray10002,
+                borderRadius: BorderRadius.circular(50)),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Icon(
+                Icons.person,
+                size: 28,
+              ),
+            ))
       ],
     );
   }
@@ -181,14 +193,20 @@ class HomeScreen extends StatelessWidget {
                           width: 20.adaptSize,
                           margin: EdgeInsets.only(top: 6.v),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 9.h,
-                            bottom: 7.v,
-                          ),
-                          child: Text(
-                            "Where you to go?",
-                            style: CustomTextStyles.titleMediumPrimaryContainer,
+                        InkWell(
+                          onTap: () {
+                            onTapSearch(context);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 9.h,
+                              bottom: 7.v,
+                            ),
+                            child: Text(
+                              "Where you to go?",
+                              style:
+                                  CustomTextStyles.titleMediumPrimaryContainer,
+                            ),
                           ),
                         )
                       ],
@@ -221,30 +239,35 @@ class HomeScreen extends StatelessWidget {
             decoration: AppDecoration.fillGray10001.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder10,
             ),
-            child: Row(
-              children: [
-                Text(
-                  "Wed, Mar 20",
-                  style: theme.textTheme.bodyMedium,
-                ),
-                Spacer(
-                  flex: 50,
-                ),
-                Text(
-                  "-",
-                  style: theme.textTheme.bodyMedium,
-                ),
-                Spacer(
-                  flex: 22,
-                ),
-                Text(
-                  "Mon, Mar 25",
-                  style: theme.textTheme.bodyMedium,
-                ),
-                Spacer(
-                  flex: 26,
-                )
-              ],
+            child: InkWell(
+              onTap: (() {
+                Navigator.pushNamed(context, AppRoutes.seclectDateScreen);
+              }),
+              child: Row(
+                children: [
+                  Text(
+                    "Fri, May 24",
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  Spacer(
+                    flex: 50,
+                  ),
+                  Text(
+                    "-",
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  Spacer(
+                    flex: 22,
+                  ),
+                  Text(
+                    "Sat, May 25",
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  Spacer(
+                    flex: 26,
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -260,26 +283,53 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(right: 9.h),
-              child: CustomTextFormField(
-                controller: returnvalueoneController,
-                hintText: "Return",
-                textInputAction: TextInputAction.done,
-                prefix: Container(
-                  margin: EdgeInsets.fromLTRB(17.h, 14.v, 9.h, 11.v),
-                  child: CustomImageView(
-                    imagePath: ImageConstant.imgTelevisionGray400,
-                    height: 22.v,
-                    width: 20.h,
+            child: Container(
+              // margin: EdgeInsets.only(left: 9.h),
+              padding: EdgeInsets.symmetric(
+                  // horizontal: 14.h,
+                  // vertical: 12.v,
                   ),
-                ),
-                prefixConstraints: BoxConstraints(
-                  maxHeight: 48.v,
-                ),
-                borderDecoration: TextFormFieldStyleHelper.fillGray,
-                filled: true,
-                fillColor: appTheme.gray10001,
+              decoration: AppDecoration.fillGray10001.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder10,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(17.h, 14.v, 9.h, 11.v),
+                    child: CustomImageView(
+                      imagePath: ImageConstant.imgTelevisionGray400,
+                      height: 22.v,
+                      width: 20.h,
+                    ),
+                  ),
+                  DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      // Initial Value
+                      value: dropdownvalue,
+                      // underline: false,
+                      // Down Arrow Icon
+                      // icon: const Icon(Icons.keyboard_arrow_down),
+
+                      // Array list of items
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(
+                            items,
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownvalue = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -303,14 +353,16 @@ class HomeScreen extends StatelessWidget {
                     width: 19.h,
                     margin: EdgeInsets.only(top: 1.v),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 5.h,
-                      bottom: 4.v,
-                    ),
-                    child: Text(
-                      "2",
-                      style: theme.textTheme.bodyMedium,
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 5.h,
+                        bottom: 4.v,
+                      ),
+                      child: Text(
+                        "2",
+                        style: theme.textTheme.bodyMedium,
+                      ),
                     ),
                   ),
                   CustomImageView(
@@ -322,15 +374,17 @@ class HomeScreen extends StatelessWidget {
                       top: 1.v,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 5.h,
-                      top: 1.v,
-                      bottom: 4.v,
-                    ),
-                    child: Text(
-                      "0",
-                      style: theme.textTheme.bodyMedium,
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 5.h,
+                        top: 1.v,
+                        bottom: 4.v,
+                      ),
+                      child: Text(
+                        "0",
+                        style: theme.textTheme.bodyMedium,
+                      ),
                     ),
                   ),
                   CustomImageView(
@@ -342,15 +396,17 @@ class HomeScreen extends StatelessWidget {
                       top: 1.v,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 8.h,
-                      top: 1.v,
-                      bottom: 4.v,
-                    ),
-                    child: Text(
-                      "0",
-                      style: theme.textTheme.bodyMedium,
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 8.h,
+                        top: 1.v,
+                        bottom: 4.v,
+                      ),
+                      child: Text(
+                        "0",
+                        style: theme.textTheme.bodyMedium,
+                      ),
                     ),
                   )
                 ],
@@ -375,7 +431,7 @@ class HomeScreen extends StatelessWidget {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Humbleiconsarrowgoback:
-        return AppRoutes.searchPageContainer1Page;
+        return "/";
       case BottomBarEnum.Fluentshiftsa:
         return "/";
       case BottomBarEnum.Materialsymbolshomeoutline:
@@ -383,7 +439,7 @@ class HomeScreen extends StatelessWidget {
       case BottomBarEnum.Basilnotificationonoutline:
         return AppRoutes.notificationScreen;
       case BottomBarEnum.Phuserbold:
-        return AppRoutes.editProfileScreen;
+        return AppRoutes.settingScreen;
       default:
         return "/";
     }

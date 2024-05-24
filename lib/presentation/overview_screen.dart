@@ -20,7 +20,7 @@ class OverviewScreen extends StatelessWidget {
         backgroundColor: appTheme.gray10002,
         appBar: _buildAppBar(context),
         body: SizedBox(
-          width: 375.h,
+          // width: 375.h,
           child: Column(
             children: [
               SizedBox(height: 24.v),
@@ -39,7 +39,9 @@ class OverviewScreen extends StatelessWidget {
                           style: theme.textTheme.titleMedium,
                         ),
                         SizedBox(height: 18.v),
-                        _buildUserProfile(context)
+                        _buildUserProfile(context),
+                        SizedBox(height: 18.v),
+                        _buildUserProfile2(context)
                       ],
                     ),
                   ),
@@ -55,31 +57,31 @@ class OverviewScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
+    return AppBar(
       leadingWidth: 21.h,
-      leading: AppbarLeadingImage(
-        imagePath: ImageConstant.imgArrowLeft,
-        margin: EdgeInsets.only(
-          left: 9.h,
-          top: 11.v,
-          bottom: 11.v,
-        ),
-        onTap: () {
-          onTapArrowleftone(context);
-        },
-      ),
+      // leading: AppbarLeadingImage(
+      //   imagePath: ImageConstant.imgArrowLeft,
+      //   margin: EdgeInsets.only(
+      //     left: 9.h,
+      //     top: 11.v,
+      //     bottom: 11.v,
+      //   ),
+      //   onTap: () {
+      //     onTapArrowleftone(context);
+      //   },
+      // ),
       centerTitle: true,
       title: AppbarSubtitleThree(
         text: "Overview",
       ),
-      styleType: Style.bgShadow,
+      // styleType: Style.bgShadow,
     );
   }
 
   /// Section Widget
   Widget _buildFlightStackView(BuildContext context) {
     return SizedBox(
-      height: 250.v,
+      // height: 250.v,
       width: 343.h,
       child: Stack(
         alignment: Alignment.center,
@@ -329,35 +331,55 @@ class OverviewScreen extends StatelessWidget {
           ),
         );
       },
-      itemCount: 2,
+      itemCount: 1,
       itemBuilder: (context, index) {
         return UserprofileItemWidget();
       },
     );
   }
 
+  Widget _buildUserProfile2(BuildContext context) {
+    return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      separatorBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0.v),
+          child: SizedBox(
+            width: 311.h,
+            child: Divider(
+              height: 1.v,
+              thickness: 1.v,
+              color: appTheme.gray300,
+            ),
+          ),
+        );
+      },
+      itemCount: 1,
+      itemBuilder: (context, index) {
+        return UserprofileItem2Widget();
+      },
+    );
+  }
+
   /// Section Widget
   Widget _buildCheckoutColumn(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 16.h,
-        right: 16.h,
-        bottom: 9.v,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GestureDetector(
-            onTap: () {
-              onTapRowprice(context);
-            },
-            child: Container(
-              decoration: AppDecoration.outlineBlack900,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GestureDetector(
+          onTap: () {
+            onTapRowprice(context);
+          },
+          child: Container(
+            decoration: AppDecoration.outlineBlack900,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 1.v),
+                    padding: EdgeInsets.all(1.v),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -378,6 +400,9 @@ class OverviewScreen extends StatelessWidget {
                   ),
                   CustomElevatedButton(
                     height: 40.v,
+                    onPressed: () {
+                      onTapRowprice(context);
+                    },
                     width: 116.h,
                     text: "Checkout",
                     buttonStyle: CustomButtonStyles.fillTealA,
@@ -385,9 +410,9 @@ class OverviewScreen extends StatelessWidget {
                 ],
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 

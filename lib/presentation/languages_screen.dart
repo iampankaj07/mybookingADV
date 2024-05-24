@@ -24,26 +24,29 @@ class LanguagesScreen extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(vertical: 3.v),
           decoration: AppDecoration.outlineBlack900,
-          child: ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            separatorBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 2.0.v),
-                child: SizedBox(
-                  width: 315.h,
-                  child: Divider(
-                    height: 1.v,
-                    thickness: 1.v,
-                    color: appTheme.gray100,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2.0.v),
+                  child: SizedBox(
+                    width: 315.h,
+                    child: Divider(
+                      height: 1.v,
+                      thickness: 1.v,
+                      color: appTheme.gray100,
+                    ),
                   ),
-                ),
-              );
-            },
-            itemCount: 12,
-            itemBuilder: (context, index) {
-              return LanguageslistItemWidget();
-            },
+                );
+              },
+              itemCount: 12,
+              itemBuilder: (context, index) {
+                return LanguageslistItemWidget();
+              },
+            ),
           ),
         ),
       ),
@@ -52,24 +55,28 @@ class LanguagesScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: 21.h,
-      leading: AppbarLeadingImage(
-        imagePath: ImageConstant.imgArrowLeft,
-        margin: EdgeInsets.only(
-          left: 9.h,
-          top: 11.v,
-          bottom: 11.v,
-        ),
-        onTap: () {
-          onTapArrowleftone(context);
-        },
-      ),
+    return AppBar(
+      // height: 81.v,
       centerTitle: true,
-      title: AppbarSubtitleThree(
-        text: "Language",
+      // leading: IconButton(
+      //   icon: Icon(Icons.arrow_back),
+      //   onPressed: () {
+      //     onTapArrowleftone(context);
+      //     Navigator.pop(context);
+      //   },
+      // ),
+      title: Text(
+        "Language",
+        style:
+            theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400),
       ),
-      styleType: Style.bgShadow,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert),
+        )
+      ],
+      // styleType: Style.bgFill,
     );
   }
 

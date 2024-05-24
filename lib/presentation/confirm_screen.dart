@@ -120,24 +120,24 @@ class ConfirmScreen extends StatelessWidget {
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
+    return AppBar(
       leadingWidth: 21.h,
-      leading: AppbarLeadingImage(
-        imagePath: ImageConstant.imgArrowLeft,
-        margin: EdgeInsets.only(
-          left: 9.h,
-          top: 11.v,
-          bottom: 11.v,
-        ),
-        onTap: () {
-          onTapArrowleftone(context);
-        },
-      ),
+      // leading: AppbarLeadingImage(
+      //   imagePath: ImageConstant.imgArrowLeft,
+      //   margin: EdgeInsets.only(
+      //     left: 9.h,
+      //     top: 11.v,
+      //     bottom: 11.v,
+      //   ),
+      //   onTap: () {
+      //     onTapArrowleftone(context);
+      //   },
+      // ),
       centerTitle: true,
       title: AppbarSubtitleThree(
         text: "Confirm",
       ),
-      styleType: Style.bgShadow,
+      // styleType: Style.bgShadow,
     );
   }
 
@@ -178,7 +178,7 @@ class ConfirmScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildBookingSummary(BuildContext context) {
     return SizedBox(
-      height: 272.v,
+      // height: 272.v,
       width: 344.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -347,7 +347,7 @@ class ConfirmScreen extends StatelessWidget {
     required String bookingnumber,
   }) {
     return SizedBox(
-      height: 560.v,
+      // height: 560.v,
       width: 345.h,
       child: Stack(
         alignment: Alignment.center,
@@ -785,13 +785,13 @@ class ConfirmScreen extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [Divider(), SizedBox(height: 454.v), Divider()],
-            ),
-          )
+          // Align(
+          //   alignment: Alignment.center,
+          //   child: Column(
+          //     mainAxisSize: MainAxisSize.min,
+          //     children: [Divider(), SizedBox(height: 454.v), Divider()],
+          //   ),
+          // )
         ],
       ),
     );
